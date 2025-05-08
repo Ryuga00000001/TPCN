@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Xem và quản lý giỏ hàng của bạn với các sản phẩm thực phẩm chức năng.">
+    <meta name="keywords" content="thực phẩm chức năng, giỏ hàng, mua sắm">
+    <meta property="og:title" content="Giỏ hàng - Website Thực phẩm chức năng">
+    <meta property="og:description" content="Kiểm tra các sản phẩm trong giỏ hàng và tiến hành thanh toán.">
+    <meta property="og:image" content="logo.png">
+    <title>Giỏ hàng - Website Thực phẩm chức năng</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <style>
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-controls button {
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .quantity-controls input {
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        
+        .btn-remove {
+            color: white;
+            background-color: red;
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        
+        .btn-remove:hover {
+            background-color: darkred;
+        }
+        
+        .navbar {
+            background-color: #1B4D3E;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            color: #FFFFFF !important;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item {
+            margin: 0 5px;
+        }
+        
+        .nav-link {
+            color: #FFFFFF !important;
+            font-weight: 500;
+            padding: 10px 20px !important;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            display: block;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #FF5722 !important;
+            transform: scale(1.05);
+        }
+        
+        .footer-bg {
+            background-color: #1B4D3E;
+            color: #FFFFFF;
+        }
+        
+        header img {
+            height: 80px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        header img:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            header img {
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header img {
+                height: 50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-item {
+                margin: 5px 0;
+            }
+            .nav-link {
+                margin: 5px auto;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-light py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html"><img src="logo.png" alt="Logo Website"></a>
+            <form class="d-flex" id="searchForm">
+                <input class="form-control me-2" type="search" id="searchInput" placeholder="Tìm kiếm sản phẩm">
+                <button class="btn btn-outline-primary" type="submit">Tìm</button>
+            </form>
+            <div class="position-relative">
+                <a href="cart.html" class="cart-link">
+                    <i class="bi bi-cart cart-icon"></i>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Trang Chủ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="navLinks">
+                    <li class="nav-item"><a class="nav-link" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">Tin tức</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Đăng nhập</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html">Đăng ký</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="cart.html">Giỏ hàng</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container py-4">
+        <h2>Danh sách sản phẩm trong giỏ hàng</h2>
+        <div id="cartEmpty" class="alert alert-info" style="display: none;">Giỏ hàng của bạn đang trống.</div>
+        <table class="table" id="cartTable">
+            <thead>
+                <tr>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Tổng</th>
+                    <th scope="col">Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="cartItems"></tbody>
+        </table>
+        <div class="text-end">
+            <button class="btn btn-success" id="checkoutButton">Mua hàng</button>
+            <a href="index.html" class="btn btn-primary">Quay lại Trang Chủ</a>
+        </div>
+    </main>
+    <footer class="footer-bg text-center py-4">
+        <p class="footer-text">© 2025 Website Thực phẩm chức năng. Tất cả quyền lợi.</p>
+    </footer>
+    <script>
+        $(document).ready(function() {
+            function displayCart() {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                $('#cartItems').empty();
+                let total = 0;
+                if (cart.length === 0) {
+                    $('#cartEmpty').show();
+                    $('#cartTable').hide();
+                    return;
+                }
+                $('#cartEmpty').hide();
+                $('#cartTable').show();
+                cart.forEach((item, index) => {
+                    const itemTotal = item.quantity * item.price;
+                    total += itemTotal;
+                    $('#cartItems').append(`
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>
+                                <div class="quantity-controls">
+                                    <button class="btn btn-outline-secondary" onclick="decreaseQuantity(${index})">-</button>
+                                    <input type="text" value="${item.quantity}" readonly>
+                                    <button class="btn btn-outline-secondary" onclick="increaseQuantity(${index})">+</button>
+                                </div>
+                            </td>
+                            <td>${item.price.toLocaleString()} VND</td>
+                            <td>${itemTotal.toLocaleString()} VND</td>
+                            <td>
+                                <button class="btn btn-remove" onclick="removeItem(${index})">X</button>
+                            </td>
+                        </tr>
+                    `);
+                });
+                $('#cartItems').append(`
+                    <tr>
+                        <td colspan="4" class="text-end">Tổng cộng:</td>
+                        <td>${total.toLocaleString()} VND</td>
+                    </tr>
+                `);
+            }
+
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+                $('#cartCount').text(totalQuantity);
+            }
+
+            function updateNavLinks() {
+                const loggedInUser = localStorage.getItem('loggedInUser');
+                const navLinks = document.getElementById('navLinks');
+                if (loggedInUser) {
+                    navLinks.innerHTML = `
+                        <li class="nav-item"><a class="nav-link" href="about.html">Giới thiệu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="product.html">Sản phẩm</a></li>
+                        <li class="nav-item"><a class="nav-link" href="news.html">Tin tức</a></li>
+                        <li class="nav-item"><span class="nav-link">Xin chào, ${loggedInUser}</span></li>
+                        <li class="nav-item"><a class="nav-link" href="#" id="logoutLink">Đăng xuất</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="cart.html">Giỏ hàng</a></li>
+                    `;
+                    document.getElementById('logoutLink').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('loggedInUser');
+                        window.location.reload();
+                    });
+                }
+            }
+            window.increaseQuantity = function(index) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart[index].quantity += 1;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+                updateCartCount();
+            };
+            window.decreaseQuantity = function(index) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    cart.splice(index, 1);
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+                updateCartCount();
+            };
+            window.removeItem = function(index) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+                updateCartCount();
+            };
+            $('#searchForm').submit(function(e) {
+                e.preventDefault();
+                const searchQuery = $('#searchInput').val().toLowerCase();
+                window.location.href = `product.html?search=${searchQuery}`;
+            });
+            $('#checkoutButton').click(function() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cart.length === 0) {
+                    alert('Giỏ hàng của bạn đang trống!');
+                    return;
+                }
+                window.location.href = 'checkout.html';
+            });
+            displayCart();
+            updateCartCount();
+            updateNavLinks();
+        });
+    </script>
+</body>
+
+</html>

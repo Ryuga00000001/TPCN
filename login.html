@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Website Thực phẩm chức năng</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <style>
+        .navbar {
+            background-color: #1B4D3E;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            color: #FFFFFF !important;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            color: #FFFFFF !important;
+            font-weight: 500;
+            padding: 10px 20px !important;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #FF5722 !important;
+            transform: scale(1.05);
+        }
+        
+        .footer-bg {
+            background-color: #1B4D3E;
+            color: #FFFFFF;
+        }
+        
+        header img {
+            height: 80px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        header img:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            header img {
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header img {
+                height: 50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-item {
+                margin: 5px 0;
+            }
+            .nav-link {
+                margin: 5px auto;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-light py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html"><img src="logo.png" alt="Logo Website"></a>
+            <form class="d-flex" id="searchForm">
+                <input class="form-control me-2" type="search" id="searchInput" placeholder="Tìm kiếm sản phẩm">
+                <button class="btn btn-outline-primary" type="submit">Tìm</button>
+            </form>
+            <div class="position-relative">
+                <a href="cart.html" class="cart-link">
+                    <i class="bi bi-cart cart-icon"></i>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Trang Chủ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="navLinks">
+                    <li class="nav-item"><a class="nav-link" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">Tin tức</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="login.html">Đăng nhập</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html">Đăng ký</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Giỏ hàng</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container py-4">
+        <h2>Đăng Nhập</h2>
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="username" class="form-label">Tên đăng nhập</label>
+                <input type="text" class="form-control" id="username" placeholder="Nhập tên đăng nhập" required>
+                <small id="usernameError" class="form-text text-danger" style="display: none;">Tên đăng nhập không tồn tại.</small>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" required>
+                <small id="passwordError" class="form-text text-danger" style="display: none;">Mật khẩu không đúng.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+        </form>
+        <p class="mt-3">Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+    </main>
+    <footer class="footer-bg text-center py-4">
+        <p class="footer-text">© 2025 Website Thực phẩm chức năng. Tất cả quyền lợi.</p>
+    </footer>
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalQuantity;
+        }
+
+        function updateNavLinks() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const navLinks = document.getElementById('navLinks');
+            if (loggedInUser) {
+                navLinks.innerHTML = `
+                    <li class="nav-item"><a class="nav-link" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">Tin tức</a></li>
+                    <li class="nav-item"><span class="nav-link">Xin chào, ${loggedInUser}</span></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="logoutLink">Đăng xuất</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Giỏ hàng</a></li>
+                `;
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('loggedInUser');
+                    window.location.reload();
+                });
+            }
+        }
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            window.location.href = `product.html?search=${searchQuery}`;
+        });
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let username = document.getElementById('username').value.trim();
+            let password = document.getElementById('password').value.trim();
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            let user = users.find(user => user.username === username);
+            if (!user) {
+                document.getElementById('usernameError').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('usernameError').style.display = 'none';
+            }
+            if (user.password !== password) {
+                document.getElementById('passwordError').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('passwordError').style.display = 'none';
+            }
+            localStorage.setItem('loggedInUser', username);
+            alert('Đăng nhập thành công!');
+            window.location.href = 'index.html';
+        });
+        updateCartCount();
+        updateNavLinks();
+    </script>
+</body>
+
+</html>

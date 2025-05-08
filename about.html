@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tìm hiểu về chúng tôi và các sản phẩm thực phẩm chức năng chất lượng cao.">
+    <meta name="keywords" content="thực phẩm chức năng, giới thiệu, sức khỏe, làm đẹp">
+    <meta property="og:title" content="Giới thiệu - Website Thực phẩm chức năng">
+    <meta property="og:description" content="Giới thiệu công ty cung cấp thực phẩm chức năng uy tín.">
+    <meta property="og:image" content="logo.png">
+    <title>Giới thiệu - Website Thực phẩm chức năng</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <style>
+        .hero-section {
+            background-image: url('https://via.placeholder.com/1500x600/000000/FFFFFF?text=Thuc+Pham+Chuc+Nang');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero-section h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            color: black;
+        }
+        
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #212529;
+        }
+        
+        .hero-section .btn-buy-now {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #1B4D3E;
+            color: #FFFFFF;
+            font-weight: 500;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .hero-section .btn-buy-now:hover {
+            background-color: #2E6B56;
+            transform: scale(1.05);
+        }
+        
+        .about-section,
+        .about-history,
+        .mission-section {
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .about-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .about-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .about-history,
+        .mission-section {
+            background-color: #ffffff;
+            padding: 40px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-history h3,
+        .mission-section h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .about-history ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        
+        .about-history ul li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .navbar {
+            background-color: #1B4D3E;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            color: #FFFFFF !important;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item {
+            margin: 0 5px;
+        }
+        
+        .nav-link {
+            color: #FFFFFF !important;
+            font-weight: 500;
+            padding: 10px 20px !important;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            display: block;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #FF5722 !important;
+            transform: scale(1.05);
+        }
+        
+        .footer-bg {
+            background-color: #1B4D3E;
+            color: #FFFFFF;
+        }
+        
+        header img {
+            height: 80px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        header img:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            header img {
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header img {
+                height: 50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-item {
+                margin: 5px 0;
+            }
+            .nav-link {
+                margin: 5px auto;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-light py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html"><img src="logo.png" alt="Logo Website"></a>
+            <form class="d-flex" id="searchForm">
+                <input class="form-control me-2" type="search" id="searchInput" placeholder="Tìm kiếm sản phẩm">
+                <button class="btn btn-outline-primary" type="submit">Tìm</button>
+            </form>
+            <div class="position-relative">
+                <a href="cart.html" class="cart-link">
+                    <i class="bi bi-cart cart-icon"></i>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Trang Chủ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="navLinks">
+                    <li class="nav-item"><a class="nav-link active" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">Tin tức</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Đăng nhập</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html">Đăng ký</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Giỏ hàng</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section">
+        <div class="container">
+            <h1>Về chúng tôi</h1>
+            <p>Chúng tôi cam kết cung cấp các sản phẩm thực phẩm chức năng chất lượng cao, giúp bảo vệ sức khỏe và sắc đẹp của bạn.</p>
+            <a href="product.html" class="btn-buy-now">Mua ngay</a>
+        </div>
+    </section>
+    <section class="about-section">
+        <h2>Giới thiệu công ty</h2>
+        <p>Chúng tôi là một công ty chuyên cung cấp các sản phẩm thực phẩm chức năng uy tín, với hơn 20 năm kinh nghiệm trong ngành. Sản phẩm của chúng tôi được nghiên cứu và sản xuất bởi các chuyên gia hàng đầu, đảm bảo chất lượng và hiệu quả cho người
+            sử dụng. Mục tiêu của chúng tôi là giúp khách hàng duy trì một sức khỏe tốt và vẻ đẹp tự nhiên qua việc sử dụng các sản phẩm bổ sung dinh dưỡng.</p>
+        <p>Chúng tôi luôn nỗ lực sáng tạo và cải tiến sản phẩm, mang lại những giải pháp tối ưu cho từng nhu cầu của khách hàng.</p>
+    </section>
+    <section class="about-history">
+        <h3>Lịch sử hình thành và phát triển</h3>
+        <ul>
+            <li><strong>2005:</strong> Thành lập công ty, bắt đầu nghiên cứu và cung cấp sản phẩm bổ sung dinh dưỡng.</li>
+            <li><strong>2010:</strong> Mở rộng thị trường, cung cấp sản phẩm tại các khu vực khác nhau trên toàn quốc.</li>
+            <li><strong>2015:</strong> Chính thức xuất khẩu sản phẩm ra nước ngoài, mở rộng mạng lưới khách hàng quốc tế.</li>
+            <li><strong>2020:</strong> Ra mắt các dòng sản phẩm hỗ trợ giảm cân, chống lão hóa, phục hồi sức khỏe.</li>
+        </ul>
+    </section>
+    <section class="mission-section">
+        <h3>Sứ mệnh của chúng tôi</h3>
+        <p>Chúng tôi luôn cam kết mang đến cho khách hàng những sản phẩm chất lượng cao, an toàn và hiệu quả. Với đội ngũ chuyên gia hàng đầu, chúng tôi không ngừng nghiên cứu và phát triển các sản phẩm phù hợp với nhu cầu và sức khỏe của người tiêu dùng.</p>
+        <p>Chúng tôi tin rằng sức khỏe là tài sản quý giá nhất và mỗi người đều xứng đáng có một cuộc sống khỏe mạnh và hạnh phúc.</p>
+    </section>
+    <footer class="footer-bg text-center py-4">
+        <p class="footer-text">© 2025 Website Thực phẩm chức năng. Tất cả quyền lợi.</p>
+    </footer>
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalQuantity;
+        }
+
+        function updateNavLinks() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const navLinks = document.getElementById('navLinks');
+            if (loggedInUser) {
+                navLinks.innerHTML = `
+                    <li class="nav-item"><a class="nav-link active" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">Tin tức</a></li>
+                    <li class="nav-item"><span class="nav-link">Xin chào, ${loggedInUser}</span></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="logoutLink">Đăng xuất</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Giỏ hàng</a></li>
+                `;
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('loggedInUser');
+                    window.location.reload();
+                });
+            }
+        }
+        $('#searchForm').submit(function(e) {
+            e.preventDefault();
+            const searchQuery = $('#searchInput').val().toLowerCase();
+            window.location.href = `product.html?search=${searchQuery}`;
+        });
+        updateCartCount();
+        updateNavLinks();
+    </script>
+</body>
+
+</html>
